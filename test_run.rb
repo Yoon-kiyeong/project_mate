@@ -6,3 +6,5 @@ end
 
 project_name = "ProjectMate"
 greet(project_name)
+
+bundle exec rails server -b 127.0.0.1 -p 3001

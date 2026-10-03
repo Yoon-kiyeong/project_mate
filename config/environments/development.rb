@@ -73,4 +73,16 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  config.file_watcher = ActiveSupport::FileUpdateChecker
+
+  # Windows 環境でIPv6遅延によるlocalhost繋がり問題防止
+  config.action_dispatch.default_headers = {
+    'X-Frame-Options' => 'SAMEORIGIN',
+    'X-XSS-Protection' => '1; mode=block',
+    'X-Content-Type-Options' => 'nosniff'
+  }
+
+  # Windows Puma ソケット待機遅延防止
+  config.allow_concurrency = true
 end
